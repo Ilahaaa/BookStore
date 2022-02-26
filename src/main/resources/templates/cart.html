@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{css/cart.css}">
+
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,900" rel="stylesheet">
+    <title>Cart</title>
+</head>
+<body>
+
+<div class="CartContainer">
+    <div class="Header">
+        <h3 class="Heading">Shopping Cart</h3>
+        <a class="Action" th:href="@{'cart/clearCart'}" >Remove all</a>
+    </div>
+    <form method="post" th:action="${'/cart/update'}">
+    <div class="Cart-Items" th:each="item : ${session.cart}" >
+        <div class="image-box">
+            <img th:src="${item.getBookEntity().getBookImg()}" style="height: 120px"  alt=""/>
+        </div>
+        <div class="about">
+            <h1 class="title" th:text="${item.getBookEntity().getBookName()}"></h1>
+
+        </div>
+        <input min="1" name="quantity"  th:value="${item.getQuantity()}" type="number" style="width: 30px;">
+        <input type="submit" value="OK" style="background-color:wheat " />
+        <div class="prices">
+            <div class="amount" th:text = "${item.getBookEntity().getBookPrice()}"></div>
+       <a class="remove" th:href="${'cart/remove/'+ item.getBookEntity().getId()}"> Remove </a>
+
+        </div>
+    </div>
+
+    </form>
+
+
+    <hr>
+    <div class="checkout" >
+        <div class="total" th:each="item : ${session.cart}" >
+            <div>
+                <div class="Subtotal">Sub-Total</div>
+                <div class="items" th:text="${item.getQuantity()}"  ></div>
+
+            </div>
+            <div class="total-amount" th:text="${item.getBookEntity().getBookPrice() * item.getQuantity()}"></div>
+        </div>
+        <div class="Subtotal">Total <div id="total" th:text="${total}"> </div>
+        <a style=" text-decoration: none;font-size:23px; color:  #5b2a02;font-weight: 900" id="check" >Checkout</a>
+<!-- th:href="${'/cart/checkout'} -->
+
+</div>
+
+
+</div>
+    <a   id="cshop" th:href="${'/shop'}">Continue Shopping</a>
+</div>
+<script>
+    document.getElementById("check").onclick = function() {myFunction()};
+
+    function myFunction() {
+       alert("Your orders have been sent!");
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+    <link rel="stylesheet" th:href="@{css/style.css}">
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav th:replace="navbar :: navbar"></nav>
+
+
+<!-- ABOUT START -->
+
+<section id="about">
+    <div class="about my-5 pt-5">
+        <div class="container">
+            <div class="about-tittle">
+                <h2>ABOUT</h2>
+            </div>
+            <div class="about-content">
+                <div class="about-img anime-left">
+                    <img th:src="@{img/about.jpg}" alt="image">
+                </div>
+
+                <div class="about-text anime-right">
+                    <h4 th:text="${parameter.getTitle()}" />
+                    <div id="hot-coffee">
+                        <i class="fas fa-mug-hot"></i>
+                    </div>
+                        <p th:text="${parameter.getText()}" />
+                    </div>
+
+                </div>
+        </div>
+    </div>
+</section>
+
+<!-- ABOUT FINISH -->
+
+
+
+<!-- FOOTER -->
+<div th:replace="footer :: footer"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js" integrity="sha384-eMNCOe7tC1doHpGoWe/6oMVemdAVTMs2xqW4mwXrXsW0L84Iytr2wi5v2QjrP/xp" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.min.js" integrity="sha384-cn7l7gDp0eyniUwwAZgrzD06kc/tftFf19TOAs2zVinnD/C7E91j9yyk5//jjpt/" crossorigin="anonymous"></script>
+
+</body>
+</html>
